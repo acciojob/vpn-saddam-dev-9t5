@@ -68,20 +68,17 @@ public class AdminServiceImpl implements AdminService {
         }
         if(countryCode == null) throw new Exception("Country not found");
 
-        try {
-            Optional<ServiceProvider> optionalServiceProvider = serviceProviderRepository1.findById(serviceProviderId);
-            if(optionalServiceProvider.isPresent()) {
-                ServiceProvider serviceProvider = optionalServiceProvider.get();
-                Country country = new Country(givenCountryName, countryCode);
-                country = countryRepository1.save(country);
+        Optional<ServiceProvider> optionalServiceProvider = serviceProviderRepository1.findById(serviceProviderId);
+        if(optionalServiceProvider.isPresent()) {
+            ServiceProvider serviceProvider = optionalServiceProvider.get();
+            Country country = new Country(givenCountryName, countryCode);
+            country = countryRepository1.save(country);
 
-                serviceProvider.getCountryList().add(country);
-                serviceProvider = serviceProviderRepository1.save(serviceProvider);
-                return serviceProvider;
-            }
-        }catch (Exception e) {
-            throw new Exception("Country not found");
+            serviceProvider.getCountryList().add(country);
+            serviceProvider = serviceProviderRepository1.save(serviceProvider);
+            return serviceProvider;
         }
+
         return new ServiceProvider();
     }
 }
