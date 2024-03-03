@@ -21,14 +21,26 @@ public class ConnectionServiceImpl implements ConnectionService {
 
     @Override
     public User connect(int userId, String countryName) throws Exception{
-
+        try {
+            return new User();
+        }catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
     @Override
     public User disconnect(int userId) throws Exception {
-
+        try {
+            return new User();
+        }catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
     @Override
     public User communicate(int senderId, int receiverId) throws Exception {
-
+        try {
+            return new User();
+        }catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }
